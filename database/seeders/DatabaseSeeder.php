@@ -21,9 +21,5 @@ class DatabaseSeeder extends Seeder
         Category::factory(20)
             ->has(Product::factory(random_int(3,7)))
             ->create();
-
-        /*Product::factory(20)
-            ->has(Category::factory(random_int(1,3)))
-            ->create();*/
     }
 }

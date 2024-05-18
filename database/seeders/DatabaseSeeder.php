@@ -1,23 +1,29 @@
 <?php
-
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Brand;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
+use Random\RandomException;
 
 class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
+     * @throws RandomException
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        Brand::factory(20)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        Category::factory(20)
+            ->has(Product::factory(random_int(3,7)))
+            ->create();
+
+        /*Product::factory(20)
+            ->has(Category::factory(random_int(1,3)))
+            ->create();*/
     }
 }
